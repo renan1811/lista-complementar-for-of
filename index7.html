@@ -13,7 +13,7 @@
 
     //Processamento
     for (let fav of cores) {
-        let pergunta = prompt(`essa é uma das suas cores favoritas?: ${fav}`);
+        let pergunta = prompt(`essa é uma das suas cores favoritas?(sim ou não): ${fav}`).toLocaleLowerCase();
         if (pergunta === "sim") {
             cor.push(fav);
         }
@@ -21,6 +21,6 @@
 
 
     //Saída
-    alert(cor)
+    alert(`Suas cores favoritas são ${cor.join(", ")}\nA quantidade de cores que você é de ${cor.length}`)
 
 </script>

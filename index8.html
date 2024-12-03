@@ -1,0 +1,45 @@
+<script>
+    //Problema: Cidades e Estados
+    /*
+    Considere a seguinte lista de Cidades:
+    let cidades = ["Porto Alegre", "Curitiba", "Florianópolis", "Joinville", "Blumenau", "Gramado", "Santa Maria", "Londrina", "Itajaí"];
+    Pergunte ao usuário a qual estado pertence cada uma das cidades e adicione em listas separadas, sendo uma lista para cada estado.
+    No final do programa apresente os estados com as suas respectivas cidades. Porém, ordene a apresentação das listas, apresentando de forma decrescente pela quantidade de cidades que o estado possui.
+    */
+
+    //Entrada
+    let cidades = ["Porto Alegre", "Curitiba", "Florianópolis", "Joinville", "Blumenau", "Gramado", "Santa Maria", "Londrina", "Itajaí"];
+    let pr = [];
+    let sc = [];
+    let rs = [];
+
+
+    //Processamento
+    for (let lugar of cidades) {
+        let questao = prompt(`${lugar} pertence a qual estado? (Rio Grande do Sul (RS), Paraná (PR) Santa Catarina (SC))`).toLocaleUpperCase();
+        if (questao === "RS") {
+            rs.push(lugar)
+        } else if (questao === "SC") {
+            sc.push(lugar)
+        } else if (questao === "PR") {
+            pr.push(lugar)
+        } else {
+            alert(`insire valores corretos`)
+        }
+    }
+
+    let estados = [
+        { nome: "Rio Grande do Sul (RS)", cidades: rs },
+        { nome: "Santa Catarina (SC)", cidades: sc },
+        { nome: "Paraná (PR)", cidades: pr }
+    ];
+    estados.sort((a, b) => b.cidades.length - a.cidades.length);
+
+
+    //Saída
+    document.write("<h2>Estados e número de cidades (ordem decrescente):</h2>");
+    for (let estado of estados) {
+        document.write(`<br>${estado.nome}: ${estado.cidades.length} cidades - ${estado.cidades.join(", ")}`);
+    }
+
+</script>
