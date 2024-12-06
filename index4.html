@@ -1,5 +1,6 @@
+
 <script>
-    //Problema: Alterar Nomes
+    // Problema: Alterar Nomes
     /*
     Considere a existência dos seguintes nomes:
     let nomes = ["Hilário", "Rafaela", "José", "Bárbara", "Fábio", "Júlia"];
@@ -7,20 +8,30 @@
     Apresente a lista corrigida ao final do programa.
     */
 
-   // Entrada
-let nomes = ["Hilário", "Rafaela", "José", "Bárbara", "Fábio", "Júlia"];
+    // Entrada
+    let nomes = ["Hilário", "Rafaela", "José", "Bárbara", "Fábio", "Júlia"];
 
-// Expressão regular para verificar letras com acento agudo
-const caracteresComAcento = /[áéíóúÁÉÍÓÚ]/;
+    const caracteresComAcento = ["á", "é", "í", "ó", "ú"];
+    const caracteresSemAcento = ["a", "e", "i", "o", "u"];
 
-// Processamento
-for (let nome of nomes) {
-    if (caracteresComAcento.test(nome)) {
-        document.write(`O nome "${nome}" contém acento agudo.<br>`);
-    } else {
-        document.write(`O nome "${nome}" não contém acento agudo.<br>`);
+    let nomesCorrigidos = [];
+
+    // Processamento
+    for (let nome of nomes) {
+        let nomeCorrigido = ""; 
+        
+        for (let letra of nome) {
+            let letraMinuscula = letra.toLowerCase();
+            let posicao = caracteresComAcento.indexOf(letraMinuscula); 
+            if (posicao !== -1) {   
+                nomeCorrigido += caracteresSemAcento[posicao];
+            } else {
+                nomeCorrigido += letra;
+            }
+        }
+        nomesCorrigidos.push(nomeCorrigido); 
     }
-}
 
-
+    // Saída
+    document.write(nomesCorrigidos);
 </script>
